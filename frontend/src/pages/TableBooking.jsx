@@ -115,6 +115,24 @@ const TableBooking = () => {
     }
   };
 
+  // If not from group, show error
+  if (!isGroupContext) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
+        <div className="bg-white rounded-lg shadow-xl p-8 max-w-md text-center">
+          <AlertCircle className="w-16 h-16 text-red-500 mx-auto mb-4" />
+          <h2 className="text-2xl font-bold mb-3">Access Denied</h2>
+          <p className="text-gray-600 mb-4">
+            This app can only be accessed from the Telegram group.
+          </p>
+          <p className="text-sm text-gray-500">
+            Please open this app using the "Place New Table" button in your group.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Header */}
