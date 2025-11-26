@@ -178,7 +178,7 @@ const TableBooking = () => {
         {/* Amount Section */}
         <div className="bg-white rounded-lg shadow-md p-6 mb-6">
           <label className="flex items-center gap-2 text-lg font-bold mb-3">
-            <CoinsIcon className="w-6 h-6 text-yellow-600" />
+            <Coins className="w-6 h-6 text-yellow-600" />
             Amount
           </label>
           <Input
