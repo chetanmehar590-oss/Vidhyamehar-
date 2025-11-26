@@ -2,17 +2,17 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Install serve globally first
+# Install serve globally
 RUN npm install -g serve
 
-# Copy package files from frontend directory
-COPY frontend/package.json frontend/yarn.lock ./
+# Copy package files
+COPY package.json yarn.lock ./
 
 # Install dependencies
 RUN yarn install --frozen-lockfile
 
-# Copy all frontend source code
-COPY frontend/ .
+# Copy source code
+COPY . .
 
 # Build the app
 RUN yarn build
