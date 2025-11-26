@@ -30,6 +30,32 @@ const TableBooking = () => {
     options: 'None'
   });
   const [loading, setLoading] = useState(false);
+  const [isGroupContext, setIsGroupContext] = useState(true);
+  const [telegramUser, setTelegramUser] = useState(null);
+
+  // Check if opened from Telegram group
+  useEffect(() => {
+    if (window.Telegram && window.Telegram.WebApp) {
+      const tg = window.Telegram.WebApp;
+      tg.ready();
+      
+      // Get user info
+      const user = tg.initDataUnsafe?.user;
+      setTelegramUser(user);
+
+      // Check if opened from group
+      const chat = tg.initDataUnsafe?.chat;
+      if (!chat || (chat.type !== 'group' && chat.type !== 'supergroup')) {
+        setIsGroupContext(false);
+      }
+
+      // Expand to full height
+      tg.expand();
+    } else {
+      // For testing outside Telegram
+      console.log('Not in Telegram environment');
+    }
+  }, []);
 
   const amountOptions = [1000, 2000, 3000, 5000, 7000, 8000, 10000];
   const gamePlusOptions = ['100+', '200+', '500+', '1000+'];
