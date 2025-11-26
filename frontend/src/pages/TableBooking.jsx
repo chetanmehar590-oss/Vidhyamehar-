@@ -50,15 +50,6 @@ const TableBooking = () => {
       return;
     }
 
-    if (!username) {
-      toast({
-        title: 'Error',
-        description: 'Please enter your name',
-        variant: 'destructive'
-      });
-      return;
-    }
-
     setLoading(true);
     try {
       const response = await axios.post(`${API}/send-table`, {
