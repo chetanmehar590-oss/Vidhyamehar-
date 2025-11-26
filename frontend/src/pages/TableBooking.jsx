@@ -14,6 +14,7 @@ const TableBooking = () => {
   const [amount, setAmount] = useState('');
   const [type, setType] = useState('Full');
   const [gamePlus, setGamePlus] = useState('');
+  const [username, setUsername] = useState('');
   const [options, setOptions] = useState({
     freshId: false,
     codeAapDoge: false,
