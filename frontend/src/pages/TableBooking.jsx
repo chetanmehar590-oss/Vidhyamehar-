@@ -69,6 +69,7 @@ const TableBooking = () => {
         // Reset form
         setAmount('');
         setGamePlus('');
+        setUsername('');
         setOptions({
           freshId: false,
           codeAapDoge: false,
