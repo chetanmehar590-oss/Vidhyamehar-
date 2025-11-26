@@ -21,7 +21,6 @@ const TableBooking = () => {
     noKingPass: false,
     autoLoss: false
   });
-  const [username, setUsername] = useState('');
   const [balance] = useState(28.00);
   const [lastTable] = useState({
     amount: 600,
