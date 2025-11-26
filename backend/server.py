@@ -119,7 +119,8 @@ async def health_check():
     return {
         "status": "healthy",
         "bot_configured": bool(bot_token and chat_id),
-        "database_connected": True
+        "database_connected": bool(db is not None),
+        "mongo_url_set": bool(mongo_url)
     }
 
 # Include the router in the main app
