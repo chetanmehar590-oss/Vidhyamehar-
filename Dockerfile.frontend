@@ -1,24 +1,22 @@
 FROM node:18-alpine
 
-WORKDIR /build
+# Install serve first
+RUN npm install -g serve
 
-# Copy package files
-COPY frontend/package.json frontend/yarn.lock ./
+WORKDIR /app
 
-# Install ALL dependencies including serve
-RUN yarn install --frozen-lockfile && yarn global add serve
+# Copy everything from root (Koyeb clones whole repo)
+COPY . .
 
-# Copy source code
-COPY frontend/ ./
+# Go to frontend directory and install
+WORKDIR /app/frontend
+RUN yarn install --frozen-lockfile
 
-# Set environment variable for build
-ENV NODE_ENV=production
-
-# Build the application
+# Build the app
 RUN yarn build
 
 # Expose port
 EXPOSE 3000
 
-# Start the application
+# Serve from build directory
 CMD ["serve", "-s", "build", "-l", "3000"]
