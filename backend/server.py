@@ -92,6 +92,13 @@ async def get_all_tables():
     """
     Get all table requests
     """
+    if not db:
+        return {
+            "success": False,
+            "tables": [],
+            "message": "Database not configured"
+        }
+    
     try:
         tables = await db.table_requests.find().sort("timestamp", -1).to_list(100)
         # Remove MongoDB _id field to avoid ObjectId serialization issues
