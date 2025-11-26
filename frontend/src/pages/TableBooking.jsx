@@ -103,7 +103,7 @@ const TableBooking = () => {
       <div className="bg-white border-b shadow-sm">
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center gap-3">
           <div className="w-12 h-12 bg-gradient-to-br from-green-600 to-green-800 rounded-full flex items-center justify-center">
-            <DiceIcon className="w-6 h-6 text-white" />
+            <Dices className="w-6 h-6 text-white" />
           </div>
           <h1 className="text-2xl font-bold tracking-wide">DEEP NIGHT LUDO CLUB</h1>
         </div>
