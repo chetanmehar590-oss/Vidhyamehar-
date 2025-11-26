@@ -131,6 +131,16 @@ async def health_check():
         "mongo_url_set": bool(mongo_url)
     }
 
+# Add root endpoint for health checks
+@app.get("/")
+async def root_health():
+    """Root endpoint for Render health checks"""
+    return {
+        "status": "online",
+        "service": "Deep Night Ludo Club API",
+        "api_base": "/api"
+    }
+
 # Include the router in the main app
 app.include_router(api_router)
 
