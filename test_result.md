@@ -101,3 +101,101 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: "Test the Deep Night Ludo Club backend API endpoints including health checks, table requests, database storage, and error handling"
+
+backend:
+  - task: "Health Check Endpoint"
+    implemented: true
+    working: true
+    file: "backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "GET /api/ endpoint working correctly, returns proper API message"
+
+  - task: "Bot Health Check Endpoint"
+    implemented: true
+    working: true
+    file: "backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "GET /api/health endpoint working correctly, shows bot_configured: false (expected without credentials) and database_connected: true"
+
+  - task: "Send Table Request Endpoint"
+    implemented: true
+    working: true
+    file: "backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "POST /api/send-table endpoint working as expected - fails with 500 due to missing Telegram credentials (expected behavior), but successfully stores data in database"
+
+  - task: "Get Tables Endpoint"
+    implemented: true
+    working: true
+    file: "backend/server.py"
+    stuck_count: 1
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: false
+          agent: "testing"
+          comment: "Initial test failed due to MongoDB ObjectId serialization issue - FastAPI couldn't serialize ObjectId objects in JSON response"
+        - working: true
+          agent: "testing"
+          comment: "Fixed ObjectId serialization issue by removing _id field from response. GET /api/tables now working correctly, returns all stored table requests with proper JSON serialization"
+
+  - task: "Error Handling and Validation"
+    implemented: true
+    working: true
+    file: "backend/server.py"
+    stuck_count: 0
+    priority: "medium"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "Proper validation error handling working - returns 422 with detailed field validation errors for missing required fields"
+
+  - task: "Database Storage and Persistence"
+    implemented: true
+    working: true
+    file: "backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "Database operations working correctly - table requests are stored even when Telegram sending fails, data persists correctly, retrieval works with proper sorting"
+
+frontend:
+  # No frontend testing performed as per instructions
+
+metadata:
+  created_by: "testing_agent"
+  version: "1.0"
+  test_sequence: 1
+  run_ui: false
+
+test_plan:
+  current_focus:
+    - "All backend API endpoints tested and working"
+  stuck_tasks: []
+  test_all: true
+  test_priority: "high_first"
+
+agent_communication:
+    - agent: "testing"
+      message: "Completed comprehensive backend API testing for Deep Night Ludo Club. All endpoints working correctly. Fixed critical ObjectId serialization bug in GET /api/tables endpoint. Database storage working even when Telegram sending fails (expected behavior without credentials). All validation and error handling working properly."
