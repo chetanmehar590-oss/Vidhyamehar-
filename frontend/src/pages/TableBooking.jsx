@@ -53,7 +53,7 @@ const TableBooking = () => {
     setLoading(true);
     try {
       const response = await axios.post(`${API}/send-table`, {
-        username,
+        username: 'User',
         amount,
         type,
         gamePlus: gamePlus || '0',
