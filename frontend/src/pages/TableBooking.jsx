@@ -328,7 +328,7 @@ const TableBooking = () => {
           disabled={loading}
           className="w-full h-16 text-xl font-bold bg-gradient-to-r from-teal-700 to-teal-800 hover:from-teal-800 hover:to-teal-900 text-white shadow-lg rounded-xl transition-all transform hover:scale-[1.02]"
         >
-          <CheckIcon className="w-6 h-6 mr-2" />
+          <Check className="w-6 h-6 mr-2" />
           {loading ? 'Sending...' : 'Send Table'}
         </Button>
       </div>
