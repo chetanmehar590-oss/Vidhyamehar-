@@ -129,20 +129,20 @@ const TableBooking = () => {
               <h3 className="text-xl font-bold mb-2">Last Table Request</h3>
               <div className="flex items-center gap-4 text-lg mb-3">
                 <span className="flex items-center gap-2">
-                  <CoinsIcon className="w-5 h-5 text-yellow-600" />
+                  <Coins className="w-5 h-5 text-yellow-600" />
                   <span className="font-bold">₹{lastTable.amount}.00</span>
                 </span>
                 <span className="flex items-center gap-2">
-                  <DiceIcon className="w-5 h-5 text-green-600" />
+                  <Dices className="w-5 h-5 text-green-600" />
                   <span className="font-bold">{lastTable.type}</span>
                 </span>
                 <span className="flex items-center gap-2">
-                  <TrendingDownIcon className="w-5 h-5 text-red-600" />
+                  <TrendingDown className="w-5 h-5 text-red-600" />
                   <span className="font-bold">{lastTable.gamePlus}</span>
                 </span>
               </div>
               <div className="flex items-center gap-2 text-base">
-                <Settings2Icon className="w-4 h-4 text-blue-600" />
+                <Settings2 className="w-4 h-4 text-blue-600" />
                 <span className="font-semibold">Options: {lastTable.options}</span>
               </div>
             </div>
