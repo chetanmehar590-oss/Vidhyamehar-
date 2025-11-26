@@ -4,7 +4,7 @@ import { Input } from '../components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Checkbox } from '../components/ui/checkbox';
 import { toast } from '../hooks/use-toast';
-import { DiceIcon, CoinsIcon, TrendingDownIcon, Settings2Icon, CheckIcon } from 'lucide-react';
+import { Dices, Coins, TrendingDown, Settings2, Check } from 'lucide-react';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
