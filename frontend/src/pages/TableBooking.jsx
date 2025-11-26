@@ -152,21 +152,6 @@ const TableBooking = () => {
           </div>
         </div>
 
-        {/* Username Input */}
-        <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-          <label className="flex items-center gap-2 text-lg font-bold mb-3">
-            <span className="text-xl">👤</span>
-            Your Name
-          </label>
-          <Input
-            type="text"
-            placeholder="Enter your name"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            className="h-14 text-lg"
-          />
-        </div>
-
         {/* Amount Section */}
         <div className="bg-white rounded-lg shadow-md p-6 mb-6">
           <label className="flex items-center gap-2 text-lg font-bold mb-3">
