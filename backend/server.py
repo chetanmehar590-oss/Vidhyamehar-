@@ -131,6 +131,58 @@ async def health_check():
         "mongo_url_set": bool(mongo_url)
     }
 
+@api_router.post("/send-button-message")
+async def send_button_message():
+    """
+    Send button message to group
+    """
+    try:
+        import requests
+        
+        bot_token = os.environ.get('TELEGRAM_BOT_TOKEN')
+        chat_id = os.environ.get('TELEGRAM_CHAT_ID')
+        
+        if not bot_token or not chat_id:
+            raise HTTPException(status_code=400, detail="Bot credentials not configured")
+        
+        url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+        
+        payload = {
+            "chat_id": chat_id,
+            "text": "🎲 DEEP NIGHT LUDO CLUB 🎲\n\nTable book karne ke liye neeche button click karein:",
+            "reply_markup": {
+                "inline_keyboard": [[
+                    {
+                        "text": "🎲 Place New Table",
+                        "web_app": {
+                            "url": "https://deep-night-frontend.onrender.com"
+                        }
+                    }
+                ]]
+            }
+        }
+        
+        response = requests.post(url, json=payload)
+        
+        if response.status_code == 200:
+            return {
+                "success": True,
+                "message": "Button message sent to group!",
+                "response": response.json()
+            }
+        else:
+            raise HTTPException(
+                status_code=500,
+                detail=f"Failed to send message: {response.text}"
+            )
+    
+    except Exception as e:
+        logger.error(f"Error sending button message: {str(e)}")
+        raise HTTPException(
+            status_code=500,
+            detail=str(e)
+        )
+
 # Add root endpoint for health checks
 @app.get("/")
 async def root_health():
