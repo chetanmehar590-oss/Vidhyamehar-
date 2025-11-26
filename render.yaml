@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: deep-night-backend
+    env: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
+      - key: MONGO_URL
+        sync: false
+      - key: DB_NAME
+        value: deep_night_club
+
+  - type: web
+    name: deep-night-frontend
+    env: docker
+    dockerfilePath: ./frontend/Dockerfile
+    dockerContext: ./frontend
+    plan: free
+    envVars:
+      - key: REACT_APP_BACKEND_URL
+        sync: false
