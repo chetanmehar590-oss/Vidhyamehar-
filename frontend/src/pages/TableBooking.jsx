@@ -250,7 +250,7 @@ const TableBooking = () => {
         {/* Options Section */}
         <div className="bg-white rounded-lg shadow-md p-6 mb-6">
           <label className="flex items-center gap-2 text-lg font-bold mb-4">
-            <Settings2Icon className="w-6 h-6 text-blue-600" />
+            <Settings2 className="w-6 h-6 text-blue-600" />
             Options
           </label>
           <div className="space-y-4">
