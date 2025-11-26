@@ -1,6 +1,9 @@
-FROM node:18-alpine AS builder
+FROM node:18-alpine
 
 WORKDIR /app
+
+# Install serve globally first
+RUN npm install -g serve
 
 # Copy package files from frontend directory
 COPY frontend/package.json frontend/yarn.lock ./
@@ -13,17 +16,6 @@ COPY frontend/ .
 
 # Build the app
 RUN yarn build
-
-# Production stage
-FROM node:18-alpine
-
-WORKDIR /app
-
-# Install serve globally
-RUN yarn global add serve
-
-# Copy build from builder
-COPY --from=builder /app/build ./build
 
 # Expose port
 EXPOSE 3000
