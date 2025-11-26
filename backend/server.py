@@ -62,8 +62,9 @@ async def send_table_request(request: TableRequest):
         
         table_obj.sent_to_telegram = sent
         
-        # Save to MongoDB
-        await db.table_requests.insert_one(table_obj.dict())
+        # Save to MongoDB (if available)
+        if db:
+            await db.table_requests.insert_one(table_obj.dict())
         
         if not sent:
             raise HTTPException(
