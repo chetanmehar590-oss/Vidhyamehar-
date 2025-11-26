@@ -1,0 +1,25 @@
+services:
+  - name: deep-night-backend
+    type: web
+    build:
+      dockerfile: Dockerfile.backend
+      context: .
+    ports:
+      - port: 8000
+        protocol: http
+    env:
+      - TELEGRAM_BOT_TOKEN
+      - TELEGRAM_CHAT_ID
+      - MONGO_URL
+      - DB_NAME
+
+  - name: deep-night-frontend
+    type: web
+    build:
+      dockerfile: Dockerfile.frontend
+      context: .
+    ports:
+      - port: 3000
+        protocol: http
+    env:
+      - REACT_APP_BACKEND_URL
