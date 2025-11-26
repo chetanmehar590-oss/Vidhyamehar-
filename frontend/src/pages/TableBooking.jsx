@@ -223,7 +223,7 @@ const TableBooking = () => {
         {/* Game+ Section */}
         <div className="bg-white rounded-lg shadow-md p-6 mb-6">
           <label className="flex items-center gap-2 text-lg font-bold mb-3">
-            <TrendingDownIcon className="w-6 h-6 text-red-600" />
+            <TrendingDown className="w-6 h-6 text-red-600" />
             Game+
           </label>
           <Input
