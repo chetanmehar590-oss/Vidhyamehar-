@@ -88,6 +88,10 @@ async def get_all_tables():
     """
     try:
         tables = await db.table_requests.find().sort("timestamp", -1).to_list(100)
+        # Remove MongoDB _id field to avoid ObjectId serialization issues
+        for table in tables:
+            if '_id' in table:
+                del table['_id']
         return {
             "success": True,
             "tables": tables
