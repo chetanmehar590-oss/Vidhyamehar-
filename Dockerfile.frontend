@@ -1,32 +1,31 @@
 FROM node:18-alpine AS builder
 
-WORKDIR /app
+# Set working directory to frontend
+WORKDIR /app/frontend
 
-# Copy package files from frontend directory
+# Copy package files
 COPY frontend/package.json frontend/yarn.lock ./
 
 # Install dependencies
 RUN yarn install --frozen-lockfile
 
-# Copy all frontend source code
-COPY frontend/ .
+# Copy frontend source
+COPY frontend/ ./
 
-# Build the app
+# Build
 RUN yarn build
 
-# Production stage
+# Production image
 FROM node:18-alpine
 
 WORKDIR /app
 
-# Install serve globally
-RUN yarn global add serve
+# Install serve
+RUN npm install -g serve
 
-# Copy build from builder
-COPY --from=builder /app/build ./build
+# Copy build artifacts
+COPY --from=builder /app/frontend/build ./build
 
-# Expose port
 EXPOSE 3000
 
-# Serve the app
 CMD ["serve", "-s", "build", "-l", "3000"]
