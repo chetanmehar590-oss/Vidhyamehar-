@@ -1,16 +1,15 @@
 FROM python:3.11-slim
 
-# Set working directory
-WORKDIR /app/backend
+WORKDIR /app
 
-# Copy requirements
-COPY backend/requirements.txt ./
+# Copy everything from root
+COPY . .
+
+# Go to backend directory
+WORKDIR /app/backend
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy backend source
-COPY backend/ ./
 
 # Expose port
 EXPOSE 8000
