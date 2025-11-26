@@ -131,7 +131,7 @@ async def health_check():
         "mongo_url_set": bool(mongo_url)
     }
 
-@api_router.post("/send-button-message")
+@api_router.get("/send-button-message")
 async def send_button_message():
     """
     Send button message to group
